@@ -12,7 +12,7 @@ defaults:
     shell: bash
 
 jobs:
-  release-please:
+  release:
     permissions:
       contents: write  # for google-github-actions/release-please-action to create release commit
       pull-requests: write  # for google-github-actions/release-please-action to create release PR
@@ -20,6 +20,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-     
-      - uses: git-releaser/git-releaser-action@main
-        id: release
+
+
+      - name: Run git releaser
+        uses: git-releaser/git-releaser-action@main
+        with:
+          repository: ${{ github.repository }}
+          actor: ${{ github.actor }}
+          token: ${{ secrets.GITHUB_TOKEN }}
