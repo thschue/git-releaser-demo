@@ -1,3 +1,5 @@
+extra_files:
+- path: test.text
 versioning:
   version_prefix: "v"
   bump_minor_pre_major: true
